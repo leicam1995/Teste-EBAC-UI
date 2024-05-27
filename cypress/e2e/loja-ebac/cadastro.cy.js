@@ -2,16 +2,14 @@
 import { faker } from '@faker-js/faker';
 
 describe('Funcionalidade cadastro', () => {
-    
+
     beforeEach(() => {
         cy.visit('minha-conta')
     });
-
     it('Deve completar o cadastro com sucesso', () => {
         const email = faker.internet.email();
         const firstName = faker.person.firstName();
         const lastName = faker.person.lastName();
-
         cy.get('#reg_email').type(email)
         cy.get('#reg_password').type('teste123')
         cy.get(':nth-child(4) > .button').click()
@@ -21,7 +19,6 @@ describe('Funcionalidade cadastro', () => {
         cy.get('#account_last_name').type(lastName)
         cy.get('.woocommerce-Button').click()
     });
-
     it.only('Deve completar o cadastro com sucesso - usando comandos customizados', () => {
         const email = faker.internet.email();
         const firstName = faker.person.firstName();
